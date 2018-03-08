@@ -49,7 +49,7 @@ class ArtistsController extends Controller
 
         ]);
         //Insert the item into database
-        $artist = new artist();
+        $artist = new Artist;
         $artist->title = $request->name;
 
         $artist->save();

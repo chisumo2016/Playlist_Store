@@ -46,12 +46,12 @@ class PlaylistsController extends Controller
 
         ]);
         //Insert the item into database
-        $playlist = new playlists();
-        $playlist->title = $request->name;
+        $playlist = new Playlists;
+        $playlist->name = $request->name;
 
         $playlist->save();
         Session::flash('success','Playlist has been created successfully.');
-        return redirect()->back();
+        return redirect()->route('admin.playlists.index');
 
     }
 

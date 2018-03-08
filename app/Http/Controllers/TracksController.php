@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
 use App\Track;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -47,7 +48,7 @@ class TracksController extends Controller
 
         ]);
         //Insert the item into database
-        $track = new artist();
+        $track = new Track;
         $track->title = $request->title;
 
         $track->save();

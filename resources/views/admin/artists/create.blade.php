@@ -8,24 +8,13 @@
 
 
 
-            <form method="post" action="  ">
+            <form method="post" action=" {{route('playslists.create)}}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="project-name">Name <span class="require">*</span></label>
-                    <input type="text" id="artists-name" name="name" spellcheck="false" class="form-control"  placeholder="Enter Name" required>
+                    <label for="playlist-name">Name <span class="require">*</span></label>
+                    <input type="text" id="name" name="name" spellcheck="false" class="form-control"  placeholder="Enter Name" required>
                 </div>
-                @if($artist == null)
-                    <input type="hidden"  name="artists_id" value="{{$artist_id}}" class="form-control">
-                @endif
 
-
-
-                    <div class="form-group">
-                        <label for="artist_name">Name</label>
-                        <select name="artist_id" id="" class="form-control">
-
-                        </select>
-                    </div>
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="submit"/>
