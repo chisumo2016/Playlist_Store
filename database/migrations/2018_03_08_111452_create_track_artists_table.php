@@ -13,7 +13,7 @@ class CreateTrackArtistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('track_artists', function (Blueprint $table) {
+        Schema::create('trackArtists', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('track_id')->unsigned();
             $table->integer('artist_id')->unsigned();
@@ -31,6 +31,6 @@ class CreateTrackArtistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('track_artists');
+        Schema::dropIfExists('trackArtists');
     }
 }

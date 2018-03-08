@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Track;
 use Illuminate\Http\Request;
 
 class TracksController extends Controller
@@ -14,6 +15,9 @@ class TracksController extends Controller
     public function index()
     {
         //
+        $tracks = Track::all();
+        return view('admin.tracks.index', compact('tracks'));
+
     }
 
     /**

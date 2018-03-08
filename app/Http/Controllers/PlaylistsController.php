@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\playlists;
 use Illuminate\Http\Request;
 
 class PlaylistsController extends Controller
@@ -14,6 +15,8 @@ class PlaylistsController extends Controller
     public function index()
     {
         //
+        $playlists = Playlists:: all();
+        return view('admin.playslits.index', compact('playlists'));
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ArtistsController extends Controller
 {
@@ -14,6 +16,9 @@ class ArtistsController extends Controller
     public function index()
     {
         //
+        $artists = Artist::all();
+        return view('admin.artists.index', compact('artists'));
+
     }
 
     /**
@@ -24,6 +29,8 @@ class ArtistsController extends Controller
     public function create()
     {
         //
+
+        view('admin.artists.create');
     }
 
     /**
@@ -35,6 +42,19 @@ class ArtistsController extends Controller
     public function store(Request $request)
     {
         //
+
+        //Validate data item before goes in database
+        $this->validate($request,[
+            'name' =>'required|max:255' ,
+
+        ]);
+        //Insert the item into database
+        $artist = new artist();
+        $artist->title = $request->name;
+
+        $artist->save();
+        Session::flash('success','Artist has been created successfully.');
+        return redirect()->back();
     }
 
     /**
@@ -46,6 +66,11 @@ class ArtistsController extends Controller
     public function show($id)
     {
         //
+
+        $artist = Artist::find($id);
+        return view ('admin.artists.show',['item'=>$artist]);
+
+
     }
 
     /**
@@ -57,6 +82,8 @@ class ArtistsController extends Controller
     public function edit($id)
     {
         //
+        $artist = Artist::find($id);
+        return view('admin.artists.update', compact(' $artist'));
     }
 
     /**
@@ -69,6 +96,18 @@ class ArtistsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $artist =Artist::find($id);
+        //Validate data item before goes in database
+        $this->validate($request,[
+            'name' =>'required|max:255' ,
+
+        ]);
+        //Update the field
+        $artist->name = $request->name;
+
+        $artist->update();
+        Session::flash('success','Artist has been Updated successfully.');
+        return redirect()->route('admin.artists.index');
     }
 
     /**
@@ -80,5 +119,9 @@ class ArtistsController extends Controller
     public function destroy($id)
     {
         //
+
+        Artist::find($id)->delete();
+        Session::flash('success','Artist has been deleted successfully.');
+        return redirect()->route('admin.artists.index');
     }
 }
