@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\playlists;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PlaylistsController extends Controller
 {
@@ -27,6 +28,7 @@ class PlaylistsController extends Controller
     public function create()
     {
         //
+        return view('admin.playslits.create');
     }
 
     /**
@@ -38,6 +40,19 @@ class PlaylistsController extends Controller
     public function store(Request $request)
     {
         //
+        //Validate data item before goes in database
+        $this->validate($request,[
+            'name' =>'required|max:255' ,
+
+        ]);
+        //Insert the item into database
+        $playlist = new playlists();
+        $playlist->title = $request->name;
+
+        $playlist->save();
+        Session::flash('success','Playlist has been created successfully.');
+        return redirect()->back();
+
     }
 
     /**
@@ -49,6 +64,8 @@ class PlaylistsController extends Controller
     public function show($id)
     {
         //
+        $playslist = Playlits::find($id);
+        return view ('admin.artists.show',compact('playslist'));
     }
 
     /**
@@ -60,6 +77,8 @@ class PlaylistsController extends Controller
     public function edit($id)
     {
         //
+        $playslist = Artist::find($id);
+        return view('admin.artists.update', compact(' playslist'));
     }
 
     /**
@@ -72,6 +91,19 @@ class PlaylistsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $playlist = Playlists::find($id);
+        //Validate data item before goes in database
+        $this->validate($request,[
+            'name' =>'required|max:255' ,
+
+        ]);
+        //Update the field
+        $playlist->name = $request->name;
+
+        $playlist->update();
+        Session::flash('success','Playlist has been Updated successfully.');
+        return redirect()->route('admin.artists.index');
     }
 
     /**
@@ -83,5 +115,9 @@ class PlaylistsController extends Controller
     public function destroy($id)
     {
         //
+
+        Playlits::find($id)->delete();
+        Session::flash('success','Playlist has been deleted successfully.');
+        return redirect()->route('admin.artists.index');
     }
 }

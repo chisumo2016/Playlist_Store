@@ -68,7 +68,7 @@ class ArtistsController extends Controller
         //
 
         $artist = Artist::find($id);
-        return view ('admin.artists.show',['item'=>$artist]);
+        return view ('admin.artists.show',compact('artist '));
 
 
     }
