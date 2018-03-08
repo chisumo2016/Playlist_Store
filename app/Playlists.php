@@ -8,6 +8,7 @@ class playlists extends Model
 {
     //
     //Mass Assigement
+
     protected  $fillable = [
         'name'
     ];

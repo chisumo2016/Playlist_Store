@@ -8,13 +8,13 @@
 
 
 
-            <form method="post" action=" {{route('playslists.create)}}">
+            <form method="post" action=" {{route('playslists)}}">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="playlist-name">Name <span class="require">*</span></label>
                     <input type="text" id="name" name="name" spellcheck="false" class="form-control"  placeholder="Enter Name" required>
                 </div>
-
+                <input name="_method" type="hidden" value="PATCH">
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="submit"/>

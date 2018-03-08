@@ -46,7 +46,7 @@ class PlaylistsController extends Controller
 
         ]);
         //Insert the item into database
-        $playlist = new Playlists;
+        $playlist = new Playlists();
         $playlist->name = $request->name;
 
         $playlist->save();

@@ -48,7 +48,7 @@ class TracksController extends Controller
 
         ]);
         //Insert the item into database
-        $track = new Track;
+        $track = new Track();
         $track->title = $request->title;
 
         $track->save();
