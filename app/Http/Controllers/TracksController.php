@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TracksController extends Controller
 {
@@ -28,6 +29,7 @@ class TracksController extends Controller
     public function create()
     {
         //
+        return view('admin.tracks.create');
     }
 
     /**
@@ -39,6 +41,18 @@ class TracksController extends Controller
     public function store(Request $request)
     {
         //
+        //Validate data item before goes in database
+        $this->validate($request,[
+            'title' =>'required|max:255' ,
+
+        ]);
+        //Insert the item into database
+        $track = new artist();
+        $track->title = $request->title;
+
+        $track->save();
+        Session::flash('success','Track has been created successfully.');
+        return redirect()->back();
     }
 
     /**
@@ -50,6 +64,9 @@ class TracksController extends Controller
     public function show($id)
     {
         //
+
+        $track = Track::find($id);
+        return view ('admin.tracks.show',compact(' track '));
     }
 
     /**
@@ -61,6 +78,8 @@ class TracksController extends Controller
     public function edit($id)
     {
         //
+        $track = Track::find($id);
+        return view('admin.tracks.update', compact('track'));
     }
 
     /**
@@ -73,6 +92,19 @@ class TracksController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $track  = Track::find($id);
+        //Validate data item before goes in database
+        $this->validate($request,[
+            'title' =>'required|max:255' ,
+
+        ]);
+        //Update the field
+        $track ->title = $request->title;
+
+        $track ->update();
+        Session::flash('success','Tracks has been Updated successfully.');
+        return redirect()->route('admin.tracks.index');
     }
 
     /**
@@ -84,5 +116,8 @@ class TracksController extends Controller
     public function destroy($id)
     {
         //
+        Track::find($id)->delete();
+        Session::flash('success','Tracks has been deleted successfully.');
+        return redirect()->route('admin.tracks.index');
     }
 }

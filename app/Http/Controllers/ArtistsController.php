@@ -30,7 +30,7 @@ class ArtistsController extends Controller
     {
         //
 
-        view('admin.artists.create');
+        return view('admin.artists.create');
     }
 
     /**
@@ -83,7 +83,7 @@ class ArtistsController extends Controller
     {
         //
         $artist = Artist::find($id);
-        return view('admin.artists.update', compact(' $artist'));
+        return view('admin.artists.update', compact('artist'));
     }
 
     /**
