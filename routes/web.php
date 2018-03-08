@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/artist', 'ArtistsController');
 Route::resource('/tracks', 'TracksController');
-Route::resource('/playslists', 'PlaylistsController');
+Route::resource('playslists', 'PlaylistsController');
+Route::resource('book', 'BookController');
 
 

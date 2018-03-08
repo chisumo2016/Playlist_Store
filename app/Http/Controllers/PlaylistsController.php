@@ -39,6 +39,7 @@ class PlaylistsController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         //
         //Validate data item before goes in database
         $this->validate($request,[
@@ -51,7 +52,8 @@ class PlaylistsController extends Controller
 
         $playlist->save();
         Session::flash('success','Playlist has been created successfully.');
-        return redirect()->route('admin.playlists.index');
+        return redirect()->route('admin.playslits.index');
+
 
     }
 
@@ -65,7 +67,7 @@ class PlaylistsController extends Controller
     {
         //
         $playslist = Playlits::find($id);
-        return view ('admin.artists.show',compact('playslist'));
+        return view ('admin.playlists.show',compact('playslist'));
     }
 
     /**
@@ -78,7 +80,7 @@ class PlaylistsController extends Controller
     {
         //
         $playslist = Artist::find($id);
-        return view('admin.artists.update', compact(' playslist'));
+        return view('admin.playlists.update', compact(' playslist'));
     }
 
     /**

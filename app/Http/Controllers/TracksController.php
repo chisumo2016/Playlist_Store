@@ -53,7 +53,7 @@ class TracksController extends Controller
 
         $track->save();
         Session::flash('success','Track has been created successfully.');
-        return redirect()->back();
+        return redirect(' playslists ');
     }
 
     /**

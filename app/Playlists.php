@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class playlists extends Model
+class Playlists extends Model
 {
     //
     //Mass Assigement
@@ -12,4 +12,7 @@ class playlists extends Model
     protected  $fillable = [
         'name'
     ];
+    public $timestamps = false;
+
 }
+

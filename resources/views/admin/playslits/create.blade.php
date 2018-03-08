@@ -7,12 +7,12 @@
         <h1>Add New Playslist</h1>
         <div class="row col-md-12  col-lg-12  col-sm-12">
 
+            <form method="post" action="{{url('playslists')}}">
 
-            <form method="post" action=" ">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="playlist-name">Name <span class="require">*</span></label>
-                    <input type="text" id="artists-name" name="name" spellcheck="false" class="form-control"  placeholder="Enter Name" required>
+                    <input type="text" id="name" name="name" spellcheck="false" class="form-control"  placeholder="Enter Name" required>
                 </div>
 
                 <div class="form-group">
