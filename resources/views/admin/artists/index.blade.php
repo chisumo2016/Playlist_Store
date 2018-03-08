@@ -4,7 +4,7 @@
     <div class="col-md-6 col-lg-6 col-md-offset-2 col-lg-offset-3">
         <div class="card ">
             <div class="card-header bg-primary ">
-                Artists   <a href="" class="pull-right btn btn-primary btn-sm">Create New </a>
+                Artists   <a href="artist/create " class="pull-right btn btn-primary btn-sm">Create New </a>
             </div>
             <div class="card-body">
                 <ul class="list-group">

@@ -8,7 +8,7 @@
 
 
 
-            <form method="post" action="{{route('artist.store')}}">
+            <form method="post" action="  ">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="project-name">Name <span class="require">*</span></label>

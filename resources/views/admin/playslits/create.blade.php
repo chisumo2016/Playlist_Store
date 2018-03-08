@@ -8,7 +8,7 @@
         <div class="row col-md-12  col-lg-12  col-sm-12">
 
 
-            <form method="post" action="{{route('playlist.store')}}">
+            <form method="post" action=" ">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="playlist-name">Name <span class="require">*</span></label>
